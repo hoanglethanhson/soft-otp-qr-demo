@@ -5,14 +5,28 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Xác nhận thanh toán</title>
 </head>
 <body>
-    <form th:action="@{/confirm-payment}" th:object="${billingInfo}" method="POST">
-        SĐT nhận tiền: <input type="text" th:field="*{phoneNumber}"> <br>
-        Họ tên người nhận tiền: <input type="text" th:field="*{name}"> <br>
-        Số tiền thanh toán: <input type="text" th:field="*{amount}"> <br>
-        <input type="submit" value="Thanh toán">
-    </form>
+    <div class="container">
+        <h1 class="lead bg-info">Nhập thông tin giao dịch</h1>
+        <form th:action="@{/confirm-payment}" th:object="${billingInfo}" method="POST">
+            <div class="form-group col-xs-3">
+                <input type="hidden" th:field="*{username}" id="sender">
+                <label for="receiver-number">SĐT nhận tiền:</label> <input type="text" th:field="*{phoneNumber}" class="form-control" id="receiver-number"> <br>
+                <label for="receiver-name">Họ tên người nhận tiền:</label> <input type="text" th:field="*{name}" class="form-control" id="receiver-name"> <br>
+                <label for="amount">Số tiền thanh toán:</label> <input type="text" th:field="*{amount}" class="form-control" id="amount"> <br>
+                <input type="submit" value="Thanh toán" class="btn btn-primary">
+            </div>
+        </form>
+        <br>
+    </div>
+
+    <div class="container">
+        <form th:action="@{/index}">
+            <input type="submit" value="Trở về trang chủ" class="btn btn-default">
+        </form>
+    </div>
 </body>
 </html>

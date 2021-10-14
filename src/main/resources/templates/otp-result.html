@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Verify Result</title>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 th:text="${result}" th:style="${isSuccess}? 'color: green;' : 'color: red'" id="result"></h1>
+            <p th:text="${message}"></p>
+        </div>
+        <br>
+    </div>
+
+    <div class="container">
+        <form th:action="@{/index}">
+            <input type="submit" value="Trở về trang chủ" class="btn btn-default">
+        </form>
+    </div>
+</body>
+</html>

@@ -2,9 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Đăng nhập</title>
 </head>
 <body>
-    <a th:href="@{/show-payment}">Chuyển tiền</a>
+    <div class="container">
+        <h1 class="lead bg-info">Đăng nhập vào hệ thống</h1>
+        <form th:action="@{/show-payment}" th:object="${billingInfo}" method="post">
+            <div class="form-group col-xs-3">
+                    <label for="username">Username:</label>: <input type="text" th:field="*{username}" class="form-control" id="username"> <br>
+                    <label for="pwd">Password:</label> <input type="password" class="form-control" id="pwd"> <br>
+                    <input type="submit" class="btn btn-primary" value="Đăng nhập">
+            </div>
+        </form>
+    </div>
 </body>
 </html>

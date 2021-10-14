@@ -5,16 +5,34 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <title>QR Code Demo</title>
 
 </head>
 
 <body>
-    <form>
-        Nhập mã giao dịch: <input type="text" id="trans-code"> <br>
-        <input type="submit" value="Xác nhận"> <br>
-        Hoặc quét mã QR sau: <img th:src="${imgSrc}" id="qr"> <br>
-    </form>
+    <div class="container">
+        <h1 class="lead bg-info">Xác thực giao dịch</h1>
+        <form th:action="@{/submit-otp}" th:object="${billingInfo}" method="post">
+            <div class="form-group col-xs-3">
+                <label for="trans-code">Mã giao dịch:</label>
+                    <input type="text" id="trans-code" th:field="*{transactionCode}" readonly="true" th:id="trans-code" class="form-control"> <br>
+                <label for="qr">Hoặc quét mã QR sau:</label>
+                    <img th:src="${imgSrc}" id="qr" class="img-thumbnail lead"> <br>
+                <label for="otp">Nhập OTP:</label>
+                    <input type="text" th:field="*{otp}" id="otp" class="form-control"> <br>
+                <input type="hidden" th:field="*{username}">
 
+                <input type="submit" value="Xác nhận" class="btn btn-primary"> <br>
+            </div>
+        </form>
+        <br>
+    </div>
+
+    <div class="container">
+        <form th:action="@{/index}">
+            <input type="submit" value="Trở về trang chủ" class="btn btn-default">
+        </form>
+    </div>
 </body>
 </html>
